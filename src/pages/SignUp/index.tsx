@@ -1,48 +1,45 @@
-import React from 'react';
-import {
-  FiLogIn,
-  FiMail,
-  FiLock,
-  FiPackage,
-  FiUser,
-  FiArrowLeft,
-} from 'react-icons/fi';
+import React from "react";
+import { FiLogIn, FiMail, FiLock, FiPackage, FiUser, FiArrowLeft } from "react-icons/fi";
 
-import logoImg from '../../assets/logo.svg';
+import { Form } from "@unform/web";
 
-import Input from '../../components/Input';
+import logoImg from "../../assets/logo.svg";
 
-import Button from '../../components/Button';
+import Input from "../../components/Input";
 
-import { Container, Content, Background } from './styles';
+import Button from "../../components/Button";
 
-const SignIn: React.FC = () => (
-  <Container>
-    <Background />
+import { Container, Content, Background } from "./styles";
 
-    <Content>
-      <img src={logoImg} alt="GoBarber" />
-      <form>
-        <h1>Sign Up</h1>
+const SignUp: React.FC = () => {
+  function HandleSubmit(data: object): void {
+    console.log(data);
+  }
 
-        <Input icon={FiUser} name="name" placeholder="Name" />
-        <Input icon={FiMail} name="email" placeholder="E-mail" />
+  return (
+    <Container>
+      <Background />
 
-        <Input
-          icon={FiLock}
-          name="password"
-          type="password"
-          placeholder="Password"
-        />
+      <Content>
+        <img src={logoImg} alt="GoBarber" />
 
-        <Button type="submit">Register</Button>
-      </form>
-      <a href="signup">
-        <FiArrowLeft />
-        Back to Sign In
-      </a>
-    </Content>
-  </Container>
-);
+        <Form initialData={{ name: "Fastin" }} onSubmit={HandleSubmit}>
+          <h1>Sign Up</h1>
 
-export default SignIn;
+          <Input icon={FiUser} name="name" placeholder="Name" />
+          <Input icon={FiMail} name="email" placeholder="E-mail" />
+
+          <Input icon={FiLock} name="password" type="password" placeholder="Password" />
+
+          <Button type="submit">Register</Button>
+        </Form>
+        <a href="signup">
+          <FiArrowLeft />
+          Back to Sign In
+        </a>
+      </Content>
+    </Container>
+  );
+};
+
+export default SignUp;
